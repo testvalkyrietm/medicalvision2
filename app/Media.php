@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    protected $fillable = ['title', 'year', 'downloadPath', 'congress_id'];
     public function congress() {
-        $this->belongsTo('App\Congress');
+        return $this->belongsTo('App\Congress');
     }
 }

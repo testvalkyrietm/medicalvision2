@@ -2,84 +2,56 @@
 
 namespace App\Http\Controllers;
 
+use App\Congress;
 use App\Media;
+use App\Http\Requests\AddMedia;
+use App\Http\Requests\EditMedia;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function addMedia(Congress $congress = null)
     {
-        //
+        $request = [
+            'congresses'        =>  Congress::all(),
+            'congress_selected' =>  $congress != null ? $congress->id : ''
+        ];
+        return view('addPages.media', $request);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function saveAddMedia(AddMedia $media)
     {
-        //
+        try {
+            $new_media = Media::create($media->all());
+        } catch (Exception $e) {
+            redirect()->back()->withErrors('msg', $e->errorInfo);
+        }
+        return redirect('admin');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function editMedia(Media $media)
     {
-        //
+        $request = [
+            'media'         =>  $media,
+            'congresses'    =>  Congress::all()
+        ];
+        return view('editPages.media', $request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Media $media)
+    public function saveEditMedia(EditMedia $media)
     {
-        //
+        try {
+            $old_media = Media::find($media->id);
+            $old_media->update($media->all());
+        } catch (Exception $e) {
+            redirect()->back()->withErrors('msg', $e->errorInfo);
+        }
+        return redirect()->back()->with('message', 'Edit Successful!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Media $media)
+    public function deleteMedia(Media $media)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Media $media)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Media $media)
-    {
-        //
+        $media->delete();
+        return redirect()->back();
     }
 }

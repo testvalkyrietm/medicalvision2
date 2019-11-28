@@ -4,18 +4,19 @@
     <div class="container" >
         <div class="card" >
             <div class="card-header" >
-                Categories
+                <a href="{{ URL::to('/') }}" >Category</a> > {{ $category->name }}
             </div>
             <div class="card-body" >
 
                 <div class="row" >
 
-                    @foreach($categories as $category)
+                    @foreach($category->congress as $congress)
                         <div class="col-md-6 category" >
                             <div class="thumbnail">
                                 <div class="caption">
-                                    <h3>{{ $category->name }}</h3>
-                                    <p><a href="{{ route('viewcategory', $category->id) }}" class="btn btn-primary" role="button">Browse</a></p>
+                                    <img src="https://via.placeholder.com/400x400?text={{ $congress->title }}" alt="{{ $congress->title }}">
+                                    <h3>{{ $congress->title }}</h3>
+                                    <p><a href="{{ route('viewcongress', $congress->id) }}" class="btn btn-primary" role="button">Browse</a></p>
                                 </div>
                             </div>
 

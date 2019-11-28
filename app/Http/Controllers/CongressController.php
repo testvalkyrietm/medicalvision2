@@ -13,10 +13,10 @@ class CongressController extends Controller
 
     public function addCongress(Congress $congress)
     {
-        $response = [
+        $request = [
             'categories'    =>  Category::all()
         ];
-        return view('addPages.congress', $response);
+        return view('addPages.congress', $request);
     }
 
     public function saveAddCongress(AddCongress $congress)
@@ -31,8 +31,11 @@ class CongressController extends Controller
 
     public function editCongress(Congress $congress)
     {
-        $categories = Category::all();
-        return view('editPages.congress', ['congress'=>$congress, 'categories'=>$categories]);
+        $request = [
+            'categories'    =>  Category::all()
+        ];
+
+        return view('editPages.congress', $request);
     }
 
     public function saveEditCongress(EditCongress $congress)
@@ -50,6 +53,13 @@ class CongressController extends Controller
     {
         $congress->delete();
         return redirect()->back();
+    }
+
+    public function viewMedia(Congress $congress) {
+        $request = [
+            'congress'      =>  $congress
+        ];
+        return view('adminPages.media', $request);
     }
 
 }
