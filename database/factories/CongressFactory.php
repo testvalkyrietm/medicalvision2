@@ -6,7 +6,5 @@ use App\Congress;
 use Faker\Generator as Faker;
 
 $factory->define(Congress::class, function (Faker $faker) {
-    return [
-        //
-    ];
+    //
 });
