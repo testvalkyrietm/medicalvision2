@@ -36,7 +36,7 @@
                         </thead>
                         <tbody>
                         @foreach ($congresses as $congress)
-                            <tr><td>{{ $congress->id }}</td><td>{{ $congress->title }}</td><td>{{ $congress->slug }}</td><td>{{ $congress->category->name }}</td><td><a href="{{ route('editcongress', $congress->id) }}"><i class="fas fa-edit"></i> Edit</a> <a href="{{ route('deletecongress', $congress->id) }}"><i class="fas fa-remove"></i> Remove</a> <a href="{{ route('viewmedia', $congress->id) }}" ><i class="fas fa-file"></i> View Media</a> </td></tr>
+                            <tr><td>{{ $congress->id }}</td><td>{{ $congress->title }}</td><td>{{ $congress->slug }}</td><td>{{ $congress->category->name }}</td><td><a href="{{ route('editcongress', $congress->id) }}"><i class="fa fa-edit"></i> Edit</a> <a href="{{ route('deletecongress', $congress->id) }}"><i class="fa fa-remove"></i> Remove</a> <a href="{{ route('viewmedia', $congress->id) }}" ><i class="fa fa-file"></i> View Media</a> </td></tr>
                         @endforeach
                         </tbody>
                     </table>
@@ -56,7 +56,7 @@
                         </thead>
                         <tbody>
                         @foreach ($medias as $media)
-                            <tr><td>{{ $media->id }}</td><td>{{ $media->title }}</td><td>{{ $media->slug }}</td><td>{{ $media->congress->title }}</td><td><a href="{{ route('editmedia', $media->id) }}"><i class="fas fa-edit"></i> Edit</a> <a href="{{ route('deletemedia', $media->id) }}"><i class="fas fa-remove"></i> Remove</a> <a href="{{ route('viewmedia', $media->id) }}" ><i class="fas fa-file"></i> View Media</a> </td></tr>
+                            <tr><td>{{ $media->id }}</td><td>{{ $media->title }}</td><td><a class="btn btn-primary" target="_blank" href="{{ $media->downloadPath }}" >Open</a></td><td>{{ $media->congress->title }}</td><td><a href="{{ route('editmedia', $media->id) }}"><i class="fa fa-edit"></i> Edit</a> <a href="{{ route('deletemedia', $media->id) }}"><i class="fa fa-remove"></i> Remove</a> <a href="{{ route('viewmedia', $media->id) }}" ><i class="fa fa-file"></i> View Media</a> </td></tr>
                         @endforeach
                         </tbody>
                     </table>

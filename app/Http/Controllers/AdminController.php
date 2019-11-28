@@ -32,6 +32,6 @@ class AdminController extends Controller
             'congresses'    =>  Congress::all(),
             'medias'         =>  Media::all()
         ];
-        return view('home', $response);
+        return view('adminPages.home', $response);
     }
 }

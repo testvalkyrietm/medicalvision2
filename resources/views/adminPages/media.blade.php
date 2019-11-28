@@ -16,7 +16,7 @@
                         </thead>
                         <tbody>
                         @foreach ($congress->media as $media)
-                            <tr><td>{{ $media->id }}</td><td>{{ $media->title }}</td><td>{{ $media->downloadPath }}</td><td>{{ $media->year }}</td><td><a href="{{ route('editmedia', $media->id) }}"><i class="fas fa-edit"></i> Edit</a> <a href="{{ route('deletemedia', $media->id) }}"><i class="fas fa-remove"></i> Remove</a></td></tr>
+                            <tr><td>{{ $media->id }}</td><td>{{ $media->title }}</td><td><a class="btn btn-primary" target="_blank" href="{{ $media->downloadPath }}" >Open</a></td><td>{{ $media->year }}</td><td><a href="{{ route('editmedia', $media->id) }}"><i class="fas fa-edit"></i> Edit</a> <a href="{{ route('deletemedia', $media->id) }}"><i class="fas fa-remove"></i> Remove</a></td></tr>
                         @endforeach
                         </tbody>
                     </table>

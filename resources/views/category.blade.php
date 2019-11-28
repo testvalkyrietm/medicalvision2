@@ -16,7 +16,7 @@
                                 <div class="caption">
                                     <img src="https://via.placeholder.com/400x400?text={{ $congress->title }}" alt="{{ $congress->title }}">
                                     <h3>{{ $congress->title }}</h3>
-                                    <p><a href="{{ route('viewcongress', $congress->id) }}" class="btn btn-primary" role="button">Browse</a></p>
+                                    <p><a href="{{ route('viewcongress', $congress) }}" class="btn btn-primary" role="button">Browse</a></p>
                                 </div>
                             </div>
 

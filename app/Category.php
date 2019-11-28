@@ -10,4 +10,8 @@ class Category extends Model
     public function congress() {
         return $this->hasMany('App\Congress');
     }
+
+    public function getRouteKeyName() {
+        return 'slug';
+    }
 }

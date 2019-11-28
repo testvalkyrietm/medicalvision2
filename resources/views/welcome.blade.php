@@ -15,7 +15,7 @@
                             <div class="thumbnail">
                                 <div class="caption">
                                     <h3>{{ $category->name }}</h3>
-                                    <p><a href="{{ route('viewcategory', $category->id) }}" class="btn btn-primary" role="button">Browse</a></p>
+                                    <p><a href="{{ route('viewcategory', $category) }}" class="btn btn-primary" role="button">Browse</a></p>
                                 </div>
                             </div>
 
